@@ -10,3 +10,6 @@ module.exports = {
 	acl: 'public-read'
 };
 ```
+
+## Todo
+- Use HTML File API if it's available instead of iframe hack
