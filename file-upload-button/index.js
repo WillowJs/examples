@@ -1,6 +1,7 @@
+'use strict';
 var path = require('path');
 var WillowServer = require('willow-server');
-var bodyParser = require('body-parser');
+// var bodyParser = require('body-parser');
 var App = require('./components/app');
 var express = require('willow-server/node_modules/express');
 
@@ -11,8 +12,9 @@ new WillowServer({
 	app: App,
 	beforeMiddleware: [
 		express.static('assets'),
-		bodyParser.json(),
-		bodyParser.urlencoded({ extended: false }),
-		bodyParser.raw({limit: '50mb'})
+		// bodyParser.json(),
+		// bodyParser.urlencoded({ extended: false }),
+		// busboy()
+		// bodyParser.raw({limit: '50mb'})
 	]
 });

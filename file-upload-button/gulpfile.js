@@ -91,16 +91,25 @@ gulp.task('client-components', function(next) {
 					p = './' + p;
 				}
 				delete require.cache[require.resolve(p)];
-				var comp = require(p);
+				var comp = false;
+				try {
+					comp = require(p);
+				}
+				catch(e) {
+					console.log('caught exception: ', e);
+				}
 				var f = genCompClientFile(comp, file);
 				mkdirp(path.join('./assets/scripts/components', file), function(err, data2) {
-					fs.writeFile(
-						path.join('./assets/scripts/components', file, 'index.js'),
-						f,
-						function() {
-							cb1();
-						}
-					);
+					var filepath = path.join('./assets/scripts/components', file, 'index.js');
+					fs.truncate(filepath, 0, function(){
+						fs.writeFile(
+							filepath,
+							f,
+							function() {
+								cb1();
+							}
+						);
+					});
 				});
 			}, cb);
 		}]
