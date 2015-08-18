@@ -6,6 +6,7 @@ This component is a button that will upload a file to an AWS S3 server. When you
 module.exports = {
 	bucket: 'YOUR_S3_BUCKET_NAME',
 	accessKeyId: 'ACCESS_KEY_ID',
-	secretAccessKey: 'SECRET_ACCESS_KEY'
+	secretAccessKey: 'SECRET_ACCESS_KEY',
+	acl: 'public-read'
 };
 ```
